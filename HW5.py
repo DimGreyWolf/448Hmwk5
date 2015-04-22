@@ -6,6 +6,35 @@ import numpy as np
 
 # This class is the view class of MVC architecture
 # and handles all GUI functionality
+
+class Toolbar(QtGui.QWidget):
+
+    def __init__(self):
+        super(Toolbar,self).__init__()
+        self.initUI()
+
+    def initUI(self):
+        self.resize(300,500)
+        self.setFixedSize(300,500)
+        self.setWindowTitle('Toolbar')
+        labelNaa = QtGui.QLabel('# Active Compounds: ',self)
+        labelNaa.move(10,20)
+        labelNan = QtGui.QLabel('# Non-Active Compounds: ',self)
+        labelNan.move(10,50)
+        labelNna = QtGui.QLabel('# Active labelled as Non-Active: ',self)
+        labelNna.move(10,80)
+        labelNnn = QtGui.QLabel('# Non-Active labelled as Non-Active: ',self)
+        labelNnn.move(10,110)
+        labelRatio = QtGui.QLabel('Ratio: ',self)
+        labelRatio.move(10,140)
+        
+
+        btnExit = QtGui.QPushButton('Exit',self)
+        btnExit.move(200,460)
+        btnExit.clicked.connect(QtCore.QCoreApplication.instance().quit)
+
+        self.show()
+
 class DrugGraph:
 
     def __init__(self):
@@ -22,10 +51,7 @@ class DrugGraph:
         self.win.setCentralWidget(self.plot)
         self.win.show()
 
-        self.selectWin = QtGui.QWidget()
-        self.selectWin.resize(300,150)
-        self.selectWin.setWindowTitle('Selected Drug')
-        self.selectWin.show()
+        self.selectWin = Toolbar()
 
     def windowClicked(self):
         print('Clicked')
