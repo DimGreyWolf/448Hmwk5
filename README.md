@@ -11,3 +11,8 @@ This program will require an installation of Python 2.7 and Qt4 to run.
 The implementation is written for Python 2.7 and the GUI is implemented
 using the Qt4 framework. Graph plotting functionality is provided by
 pyqtgraph which requires the previous requirements and NumPy.
+
+# How to use
+To run the program just run the command:
+`python HW5.py`
+This command will then launch the GUI to the program
