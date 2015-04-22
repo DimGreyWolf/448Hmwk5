@@ -4,9 +4,7 @@ from drug_database import DrugDatabase
 import pyqtgraph as pg
 import numpy as np
 
-# This class is the view class of MVC architecture
-# and handles all GUI functionality
-
+# Subclass of DrugGraph for toolbar widget
 class Toolbar(QtGui.QWidget):
 
     def __init__(self):
@@ -17,6 +15,7 @@ class Toolbar(QtGui.QWidget):
         self.resize(300,500)
         self.setFixedSize(300,500)
         self.setWindowTitle('Drug Analysis Toolbar')
+
         radioNaa = QtGui.QRadioButton('# Active Compounds: ',self)
         radioNaa.move(10,20)
         radioNan = QtGui.QRadioButton('# Non-Active Compounds: ',self)
@@ -39,6 +38,8 @@ class Toolbar(QtGui.QWidget):
 
         self.show()
 
+# Handles all GUI functionality for Drug Analysis program
+# This class is the view class in MVC architecture
 class DrugGraph:
 
     def __init__(self):
@@ -57,17 +58,12 @@ class DrugGraph:
 
         self.selectWin = Toolbar()
 
-    def windowClicked(self):
-        print('Clicked')
-        drug, prompt = QtGui.QInputDialog.getText(win,'Selected Drug','Which drug?')
-
 # This block of the code will execute the program
 # when python runs this specific script
 # e.g 'python HW5.py'
 def main():
     app = QtGui.QApplication(sys.argv)
     drugGraph = DrugGraph()
-    #win.setCentralWidget(drugGraph)
 
     sys.exit(app.exec_())
 
