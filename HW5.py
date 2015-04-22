@@ -4,11 +4,11 @@ from drug_database import DrugDatabase
 
 # This class is the view class of MVC architecture
 # and handles all GUI functionality
-class DrugAnalysis(QtGui.QWidget):
+class DrugGraph(QtGui.QWidget):
 
     def __init__(self):
-        print('DrugAnalysis is now running')
-        super(DrugAnalysis,self).__init__()
+        print('DrugGraph is now running')
+        super(DrugGraph,self).__init__()
         self.initUI()
 
     def initUI(self):
@@ -21,7 +21,7 @@ class DrugAnalysis(QtGui.QWidget):
 # e.g 'python HW5.py'
 def main():
     app = QtGui.QApplication(sys.argv)
-    drugAnalysis = DrugAnalysis()
+    drugGraph = DrugGraph()
 
     sys.exit(app.exec_())
 
