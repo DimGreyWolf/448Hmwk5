@@ -51,10 +51,10 @@ class DrugDatabase:
         return selectedElement
     
     # Getter & Setter the ratio of the selected drug
-    def getRatio(self)
+    def getRatio(self):
         return self.ratio
 
-    def setRatio(self,ratio)
+    def setRatio(self,ratio):
         self.ratio = ratio
 
     # Selects drug list to be displayed in list widget
@@ -71,18 +71,18 @@ class DrugDatabase:
         self.listDisplay = self.listNnn
 
     # Updates drug list
-    def updateNaa(self,Naa)
+    def updateNaa(self,Naa):
         self.listNaa = Naa
 
-    def updateNan(self,Nan)
+    def updateNan(self,Nan):
         self.listNan = Nan
 
-    def updateNna(self,Nna)
+    def updateNna(self,Nna):
         self.listNna = Nna
 
-    def updateNnn(self,Nnn)
+    def updateNnn(self,Nnn):
         self.listNna = Nna
 
     # Returns display list
-    def getDisplayList(self)
+    def getDisplayList(self):
         return self.listDisplay
