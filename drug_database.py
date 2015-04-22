@@ -81,6 +81,7 @@ class DrugDatabase:
         self.listNna = Nna
 
     def updateNnn(self,Nnn)
+        self.listNna = Nna
 
     # Returns display list
     def getDisplayList(self)
