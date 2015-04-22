@@ -33,18 +33,22 @@ class DrugAnalysis:
     def selectNaa(self):
         print('Viewing Naa drugs.')
         self.model.selectNaa()
+        self.refreshDisplayList()
     
     def selectNan(self):
         print('Viewing Nan drugs.')
         self.model.selectNan()
+        self.refreshDisplayList()
 
     def selectNna(self):
         print('Viewing Nna drugs.')
         self.model.selectNna()
+        self.refreshDisplayList()
 
     def selectNnn(self):
         print('Viewing Nnn drugs.')
-        selft.model.selectNnn()    
+        self.model.selectNnn()
+        self.refreshDisplayList()
 
     #================================
     # Drug analyzation methods

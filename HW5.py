@@ -22,14 +22,18 @@ class Toolbar(QtGui.QWidget):
         self.radioNaa = QtGui.QRadioButton('# Active Compounds: ',self)
         self.radioNaa.move(10,20)
         self.radioNaa.clicked.connect(self.controller.selectNaa)
-        self.radioNaa.clicked.connect(self.controller.refreshDisplayList)
         
         self.radioNan = QtGui.QRadioButton('# Non-Active Compounds: ',self)
         self.radioNan.move(10,50)
+        self.radioNan.clicked.connect(self.controller.selectNan)
+
         self.radioNna = QtGui.QRadioButton('# Active labelled as Non-Active: ',self)
         self.radioNna.move(10,80)
+        self.radioNna.clicked.connect(self.controller.selectNna)
+
         self.radioNnn = QtGui.QRadioButton('# Non-Active labelled as Non-Active: ',self)
         self.radioNnn.move(10,110)
+        self.radioNnn.clicked.connect(self.controller.selectNnn)
 
         self.listDrugs = QtGui.QListWidget(self)
         self.listDrugs.setFixedSize(280,300)
