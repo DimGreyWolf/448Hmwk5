@@ -1,6 +1,3 @@
-from HW5 import DrugGraph, Toolbar
-from drug_database import DrugDatabase
-
 # This class performs analysis and updates 
 # DrugGraph using DrugDatabase
 # This class is the controller class in MVC architecture
@@ -10,6 +7,48 @@ class DrugAnalysis:
         print('DrugAnalysis initialized')
         self.view = view
         self.model = model
+
+    #===============================
+    # GUI related methods
+    #===============================
+    
+    #------------------
+    # Inbound to View
+    #------------------
+    
+    # Refreshes GUI with new selected list
+    def refreshDisplayList(self):
+        # Obtain data from model
+        newDisplayList = self.model.getDisplayList()
+        newRatio = self.model.getRatio()
+
+        # Apply data to view
+        self.view.toolbar.labelRatio.setText('Ratio {}'.format(newRatio)) 
+
+    #-------------------
+    # Outbound from View
+    #-------------------
+ 
+    # Changes list to be displayed in List Widget in GUI
+    def selectNaa(self):
+        print('Viewing Naa drugs.')
+        self.model.selectNaa()
+    
+    def selectNan(self):
+        print('Viewing Nan drugs.')
+        self.model.selectNan()
+
+    def selectNna(self):
+        print('Viewing Nna drugs.')
+        self.model.selectNna()
+
+    def selectNnn(self):
+        print('Viewing Nnn drugs.')
+        selft.model.selectNnn()    
+
+    #================================
+    # Drug analyzation methods
+    #================================
 
     # Euclidean Distance Analyzation method
     def method1(self,drug):

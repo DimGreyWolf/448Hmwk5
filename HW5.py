@@ -1,14 +1,17 @@
 import sys
 from PyQt4 import QtGui, QtCore
 from drug_database import DrugDatabase
+from drug_analysis import DrugAnalysis
 import pyqtgraph as pg
 import numpy as np
 
 # Subclass of DrugGraph for toolbar widget
 class Toolbar(QtGui.QWidget):
 
-    def __init__(self):
+    def __init__(self,model,controller):
         super(Toolbar,self).__init__()
+        self.model = model
+        self.controller = controller
         self.initUI()
 
     def initUI(self):
@@ -16,25 +19,28 @@ class Toolbar(QtGui.QWidget):
         self.setFixedSize(300,500)
         self.setWindowTitle('Drug Analysis Toolbar')
 
-        radioNaa = QtGui.QRadioButton('# Active Compounds: ',self)
-        radioNaa.move(10,20)
-        radioNan = QtGui.QRadioButton('# Non-Active Compounds: ',self)
-        radioNan.move(10,50)
-        radioNna = QtGui.QRadioButton('# Active labelled as Non-Active: ',self)
-        radioNna.move(10,80)
-        radioNnn = QtGui.QRadioButton('# Non-Active labelled as Non-Active: ',self)
-        radioNnn.move(10,110)
+        self.radioNaa = QtGui.QRadioButton('# Active Compounds: ',self)
+        self.radioNaa.move(10,20)
+        self.radioNaa.clicked.connect(self.controller.selectNaa)
+        self.radioNaa.clicked.connect(self.controller.refreshDisplayList)
+        
+        self.radioNan = QtGui.QRadioButton('# Non-Active Compounds: ',self)
+        self.radioNan.move(10,50)
+        self.radioNna = QtGui.QRadioButton('# Active labelled as Non-Active: ',self)
+        self.radioNna.move(10,80)
+        self.radioNnn = QtGui.QRadioButton('# Non-Active labelled as Non-Active: ',self)
+        self.radioNnn.move(10,110)
 
-        listDrugs = QtGui.QListWidget(self)
-        listDrugs.setFixedSize(280,300)
-        listDrugs.move(10,140)
+        self.listDrugs = QtGui.QListWidget(self)
+        self.listDrugs.setFixedSize(280,300)
+        self.listDrugs.move(10,140)
 
-        labelRatio = QtGui.QLabel('Ratio of selected drug: ',self)
-        labelRatio.move(10,440)        
+        self.labelRatio = QtGui.QLabel('Ratio of selected drug: ',self)
+        self.labelRatio.move(10,440)        
 
-        btnExit = QtGui.QPushButton('Exit',self)
-        btnExit.move(200,460)
-        btnExit.clicked.connect(QtCore.QCoreApplication.instance().quit)
+        self.btnExit = QtGui.QPushButton('Exit',self)
+        self.btnExit.move(200,460)
+        self.btnExit.clicked.connect(QtCore.QCoreApplication.instance().quit)
 
         self.show()
 
@@ -45,18 +51,19 @@ class DrugGraph:
     def __init__(self):
         print('DrugGraph is now running')
         self.model = DrugDatabase()
+        self.controller = DrugAnalysis(self,self.model)
         self.initUI()
         #super(DrugGraph,self).__init__()
 
     def initUI(self):
-        self.win = QtGui.QMainWindow()
-        self.win.resize(800,350)
-        self.win.setWindowTitle('Drug Analysis')
+        self.graph = QtGui.QMainWindow()
+        self.graph.resize(800,350)
+        self.graph.setWindowTitle('Drug Analysis')
         self.plot = pg.PlotWidget()
-        self.win.setCentralWidget(self.plot)
-        self.win.show()
+        self.graph.setCentralWidget(self.plot)
+        self.graph.show()
 
-        self.selectWin = Toolbar()
+        self.toolbar = Toolbar(self.model,self.controller)
 
 # This block of the code will execute the program
 # when python runs this specific script
