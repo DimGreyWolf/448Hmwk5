@@ -15,35 +15,48 @@ class Toolbar(QtGui.QWidget):
         self.initUI()
 
     def initUI(self):
-        self.resize(300,500)
-        self.setFixedSize(300,500)
-        self.setWindowTitle('Drug Analysis Toolbar')
+        self.resize(300,400)
+        self.setFixedSize(300,400)
+        self.setWindowTitle('Drug Analysis Details')
 
-        self.radioNaa = QtGui.QRadioButton('# Active Compounds: -',self)
-        self.radioNaa.move(10,20)
-        self.radioNaa.clicked.connect(self.controller.selectNaa)
+        self.radioMethod1 = QtGui.QRadioButton('Euclidean Distance',self)
+        self.radioMethod1.move(10,20)
+        self.radioMethod1.clicked.connect(self.controller.selectMethod1)
         
-        self.radioNan = QtGui.QRadioButton('# Non-Active Compounds: -',self)
-        self.radioNan.move(10,50)
-        self.radioNan.clicked.connect(self.controller.selectNan)
+        self.radioMethod2 = QtGui.QRadioButton('Mahalnobis Database',self)
+        self.radioMethod2.move(10,50)
+        self.radioMethod2.clicked.connect(self.controller.selectMethod2)
 
-        self.radioNna = QtGui.QRadioButton('# Active labelled as Non-Active: -',self)
-        self.radioNna.move(10,80)
-        self.radioNna.clicked.connect(self.controller.selectNna)
+        self.radioMethod3 = QtGui.QRadioButton('Voting Euclidean Distance',self)
+        self.radioMethod3.move(10,80)
+        self.radioMethod3.clicked.connect(self.controller.selectMethod3)
 
-        self.radioNnn = QtGui.QRadioButton('# Non-Active labelled as Non-Active: -',self)
-        self.radioNnn.move(10,110)
-        self.radioNnn.clicked.connect(self.controller.selectNnn)
+        self.radioMethod4 = QtGui.QRadioButton('Voting Mahalnobis Database',self)
+        self.radioMethod4.move(10,110)
+        self.radioMethod4.clicked.connect(self.controller.selectMethod4)
 
-        self.listDrugs = QtGui.QListWidget(self)
-        self.listDrugs.setFixedSize(280,300)
-        self.listDrugs.move(10,140)
+        self.radioMethod5 = QtGui.QRadioButton('Special Analysis',self)
+        self.radioMethod5.move(10,140)
+        self.radioMethod5.clicked.connect(self.controller.selectMethod5)
 
         self.labelRatio = QtGui.QLabel('Ratio Naa/Nan: -',self)
-        self.labelRatio.move(10,440)        
+        self.labelRatio.resize(self.labelRatio.sizeHint())
+        self.labelRatio.move(10,170) 
+
+        self.labelNaa = QtGui.QLabel('Amount of Naa: -',self)
+        self.labelNaa.move(10,200)
+
+        self.labelNan = QtGui.QLabel('Amount of Nan: -',self)
+        self.labelNan.move(10,230)
+
+        self.labelNna = QtGui.QLabel('Amount of Nna: -',self)
+        self.labelNna.move(10,260)
+
+        self.labelNnn = QtGui.QLabel('Amount of Nnn: -',self)
+        self.labelNnn.move(10,290)
 
         self.btnExit = QtGui.QPushButton('Exit',self)
-        self.btnExit.move(200,460)
+        self.btnExit.move(200,365)
         self.btnExit.clicked.connect(QtCore.QCoreApplication.instance().quit)
 
         self.show()

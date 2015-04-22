@@ -19,7 +19,6 @@ class DrugAnalysis:
     # Refreshes View with updated data 
     def refreshView(self):
         # Obtain data from model
-        newDisplayList = self.model.getDisplayList()
         newAmtNaa = self.model.getAmtNaa()
         newAmtNan = self.model.getAmtNan()
         newAmtNna = self.model.getAmtNna()
@@ -27,35 +26,32 @@ class DrugAnalysis:
         newRatio = self.model.getRatio()
 
         # Apply data to view
-        self.view.toolbar.radioNaa.setText('# Active Compounds: {}'.format(newAmtNaa))
-        self.view.toolbar.radioNan.setText('# Non-Active Compounds: {}'.format(newAmtNan))
-        self.view.toolbar.radioNna.setText('# Active labelled as Non-Active: {}'.format(newAmtNna))
-        self.view.toolbar.radioNnn.setText('# Non-Active labelled as Non-ACtive: {}'.format(newAmtNnn))
         self.view.toolbar.labelRatio.setText('Ratio Naa/Nan: {}'.format(newRatio)) 
+        self.view.toolbar.labelRatio.resize(self.view.toolbar.labelRatio.sizeHint())
 
     #-------------------
     # Outbound from View
     #-------------------
  
     # Changes list to be displayed in List Widget in GUI
-    def selectNaa(self):
-        print('Viewing Naa drugs.')
-        self.model.selectNaa()
+    def selectMethod1(self):
+        print('Viewing Method 1')
         self.refreshView()
     
-    def selectNan(self):
-        print('Viewing Nan drugs.')
-        self.model.selectNan()
+    def selectMethod2(self):
+        print('Viewing Method 2')
         self.refreshView()
 
-    def selectNna(self):
-        print('Viewing Nna drugs.')
-        self.model.selectNna()
+    def selectMethod3(self):
+        print('Viewing Method 3')
         self.refreshView()
 
-    def selectNnn(self):
-        print('Viewing Nnn drugs.')
-        self.model.selectNnn()
+    def selectMethod4(self):
+        print('Viewing Method 4')
+        self.refreshView()
+
+    def selectMethod5(self):
+        print('Viewing Method 5')
         self.refreshView()
 
     #================================
@@ -67,6 +63,10 @@ class DrugAnalysis:
         # Obtains name element of selected candidate using model
         candidateName = self.model.getCandidateData(drug,0)
         log = 'Analyzing drug {} using Euclidean Distance comparison.'.format(candidateName)
+        self.model.setAmtNaa(1)
+        self.model.setAmtNan(1)
+        self.model.setAmtNna(1)
+        self.model.setAmtNnn(1)
         return 0
 
     # Mahalnobis Database Analyzation method
