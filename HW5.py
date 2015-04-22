@@ -73,7 +73,7 @@ class DrugGraph:
         #super(DrugGraph,self).__init__()
 
     def initUI(self):
-        self.graph = QtGui.QMainWindow()
+        self.graph = QtGui.QMainWindow() 
         self.graph.resize(800,350)
         self.graph.setWindowTitle('Drug Analysis')
         self.plot = pg.PlotWidget()
