@@ -9,4 +9,5 @@ Homework #5 for EECS 448
 # Requirements
 This program will require an installation of Python 2.7 and Qt4 to run.
 The implementation is written for Python 2.7 and the GUI is implemented
-using the Qt4 framework.
+using the Qt4 framework. Graph plotting functionality is provided by
+pyqtgraph which requires the previous requirements and NumPy.
