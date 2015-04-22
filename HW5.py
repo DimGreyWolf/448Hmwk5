@@ -19,19 +19,19 @@ class Toolbar(QtGui.QWidget):
         self.setFixedSize(300,500)
         self.setWindowTitle('Drug Analysis Toolbar')
 
-        self.radioNaa = QtGui.QRadioButton('# Active Compounds: ',self)
+        self.radioNaa = QtGui.QRadioButton('# Active Compounds: -',self)
         self.radioNaa.move(10,20)
         self.radioNaa.clicked.connect(self.controller.selectNaa)
         
-        self.radioNan = QtGui.QRadioButton('# Non-Active Compounds: ',self)
+        self.radioNan = QtGui.QRadioButton('# Non-Active Compounds: -',self)
         self.radioNan.move(10,50)
         self.radioNan.clicked.connect(self.controller.selectNan)
 
-        self.radioNna = QtGui.QRadioButton('# Active labelled as Non-Active: ',self)
+        self.radioNna = QtGui.QRadioButton('# Active labelled as Non-Active: -',self)
         self.radioNna.move(10,80)
         self.radioNna.clicked.connect(self.controller.selectNna)
 
-        self.radioNnn = QtGui.QRadioButton('# Non-Active labelled as Non-Active: ',self)
+        self.radioNnn = QtGui.QRadioButton('# Non-Active labelled as Non-Active: -',self)
         self.radioNnn.move(10,110)
         self.radioNnn.clicked.connect(self.controller.selectNnn)
 
@@ -39,7 +39,7 @@ class Toolbar(QtGui.QWidget):
         self.listDrugs.setFixedSize(280,300)
         self.listDrugs.move(10,140)
 
-        self.labelRatio = QtGui.QLabel('Ratio of selected drug: ',self)
+        self.labelRatio = QtGui.QLabel('Ratio Naa/Nan: -',self)
         self.labelRatio.move(10,440)        
 
         self.btnExit = QtGui.QPushButton('Exit',self)

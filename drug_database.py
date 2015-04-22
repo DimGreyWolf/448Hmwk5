@@ -10,6 +10,10 @@ class DrugDatabase:
         self.candidates = []
         self.examples = []
         self.ratio = 0.0
+        self.AmtNaa = 0
+        self.AmtNan = 0
+        self.AmtNna = 0
+        self.AmtNnn = 0
         self.listDisplay = []
         self.listNaa = []
         self.listNan = []
@@ -56,6 +60,19 @@ class DrugDatabase:
 
     def setRatio(self,ratio):
         self.ratio = ratio
+
+    # Getter & Setter for amount in specific drug list
+    def getAmtNaa(self):
+        return self.AmtNaa
+
+    def getAmtNan(self):
+        return self.AmtNan
+
+    def getAmtNna(self):
+        return self.AmtNna
+
+    def getAmtNnn(self):
+        return self.AmtNnn
 
     # Selects drug list to be displayed in list widget
     def selectNaa(self):

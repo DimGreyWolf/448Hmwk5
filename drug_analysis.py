@@ -27,7 +27,11 @@ class DrugAnalysis:
         newRatio = self.model.getRatio()
 
         # Apply data to view
-        self.view.toolbar.labelRatio.setText('Ratio {}'.format(newRatio)) 
+        self.view.toolbar.radioNaa.setText('# Active Compounds: {}'.format(newAmtNaa))
+        self.view.toolbar.radioNan.setText('# Non-Active Compounds: {}'.format(newAmtNan))
+        self.view.toolbar.radioNna.setText('# Active labelled as Non-Active: {}'.format(newAmtNna))
+        self.view.toolbar.radioNnn.setText('# Non-Active labelled as Non-ACtive: {}'.format(newAmtNnn))
+        self.view.toolbar.labelRatio.setText('Ratio Naa/Nan: {}'.format(newRatio)) 
 
     #-------------------
     # Outbound from View
