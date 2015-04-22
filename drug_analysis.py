@@ -16,10 +16,14 @@ class DrugAnalysis:
     # Inbound to View
     #------------------
     
-    # Refreshes GUI with new selected list
-    def refreshDisplayList(self):
+    # Refreshes View with updated data 
+    def refreshView(self):
         # Obtain data from model
         newDisplayList = self.model.getDisplayList()
+        newAmtNaa = self.model.getAmtNaa()
+        newAmtNan = self.model.getAmtNan()
+        newAmtNna = self.model.getAmtNna()
+        newAmtNnn = self.model.getAmtNnn()
         newRatio = self.model.getRatio()
 
         # Apply data to view
@@ -33,22 +37,22 @@ class DrugAnalysis:
     def selectNaa(self):
         print('Viewing Naa drugs.')
         self.model.selectNaa()
-        self.refreshDisplayList()
+        self.refreshView()
     
     def selectNan(self):
         print('Viewing Nan drugs.')
         self.model.selectNan()
-        self.refreshDisplayList()
+        self.refreshView()
 
     def selectNna(self):
         print('Viewing Nna drugs.')
         self.model.selectNna()
-        self.refreshDisplayList()
+        self.refreshView()
 
     def selectNnn(self):
         print('Viewing Nnn drugs.')
         self.model.selectNnn()
-        self.refreshDisplayList()
+        self.refreshView()
 
     #================================
     # Drug analyzation methods
