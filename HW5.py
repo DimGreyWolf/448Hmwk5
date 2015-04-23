@@ -14,6 +14,7 @@ class Toolbar(QtGui.QWidget):
         self.controller = controller
         self.initUI()
 
+    # Initialize UI elements for toolbar
     def initUI(self):
         self.resize(300,400)
         self.setFixedSize(300,400)
@@ -72,6 +73,7 @@ class DrugGraph:
         self.initUI()
         #super(DrugGraph,self).__init__()
 
+    # Initialize UI elements for Graph and generally initializes Toolbar
     def initUI(self):
         self.graph = QtGui.QMainWindow() 
         self.graph.resize(800,350)
