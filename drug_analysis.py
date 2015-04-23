@@ -95,12 +95,23 @@ class DrugAnalysis:
         for x in range(0,self.model.getAmtCandidates()):
             # Go through list of all examples
             for y in range(0,self.model.getAmtExamples()):
+                # Go through all elements aka properties
                 for z in range(1,16):
                     print('')
-        self.model.setAmtNaa(1,1)
-        self.model.setAmtNan(1,1)
-        self.model.setAmtNna(1,1)
-        self.model.setAmtNnn(1,1)
+
+        newNaa = 0
+        newNan = 0
+        newNna = 0
+        newNnn = 0
+
+        # Sets new drug counts using current method
+        self.model.setAmtNaa(1,newNaa)
+        self.model.setAmtNan(1,newNan)
+        self.model.setAmtNna(1,newNna)
+        self.model.setAmtNnn(1,newNnn)
+
+        newRatio = self.model.getAmtNaa / self.model.getAmt
+        self.model.setRatio(1,newRatio)
         return 0
 
     # Mahalnobis Database Analyzation method
