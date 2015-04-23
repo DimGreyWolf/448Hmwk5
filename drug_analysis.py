@@ -23,6 +23,13 @@ class DrugAnalysis:
     
     # Refreshes View with updated data 
     def refreshView(self):
+        # Reperform all comparison analysis methods
+        self.method1()
+        self.method2()
+        self.method3()
+        self.method4()
+        self.method5()
+
         # Obtain data from model
         newAmtNaa = self.model.getAmtNaa(self.selectedMethod)
         newAmtNan = self.model.getAmtNan(self.selectedMethod)
@@ -84,7 +91,7 @@ class DrugAnalysis:
 
     # Euclidean Distance Analyzation method
     def method1(self):
-        log = 'Analyzing drug {} using Euclidean Distance comparison.'.format(candidateName)
+        print('Performing comparison method 1...')
 
         # Data structures to store delta difference from active and non-active
         dA = []
@@ -115,22 +122,24 @@ class DrugAnalysis:
         self.model.setAmtNna(1,newNna)
         self.model.setAmtNnn(1,newNnn)
 
-        newRatio = self.model.getAmtNaa / self.model.getAmt
+        if newNan != 0:
+            newRatio = newNaa / newNan
+        else:
+            newRatio = newNaa
         self.model.setRatio(1,newRatio)
-        return 0
 
     # Mahalnobis Database Analyzation method
     def method2(self):
-        return 0
+        print('Performing comparison method 2...')
 
     # Voting method using Euclidean Distance method
     def method3(self):
-        return 0
+        print('Performing comparison method 3...')
 
     # Voting method using Mahalnobus Database Analyzation method
     def method4(self):
-        return 0
+        print('Performing comparison method 4...')
 
     # Special Analyzation method
     def method5(self):
-        return 0
+        print('Performing comparison method 5...')
