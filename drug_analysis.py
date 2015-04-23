@@ -84,10 +84,9 @@ class DrugAnalysis:
 
     # Euclidean Distance Analyzation method
     def method1(self):
-        # Obtains name element of selected candidate using model
-        candidateName = self.model.getCandidateData(drug,0)
         log = 'Analyzing drug {} using Euclidean Distance comparison.'.format(candidateName)
 
+        # Data structures to store delta difference from active and non-active
         dA = []
         dN = []
 
@@ -95,9 +94,15 @@ class DrugAnalysis:
         for x in range(0,self.model.getAmtCandidates()):
             # Go through list of all examples
             for y in range(0,self.model.getAmtExamples()):
+                sum = 0
                 # Go through all elements aka properties
-                for z in range(1,16):
-                    print('')
+                for z in range(4,19):
+                    candidateProperty = self.model.getCandidateDrug(x,z)
+                    exampleProperty = self.model.getExampleDrug(y,z)
+                    diff = candidateProperty - exampleProperty
+                    sum += pow(diff,2)
+                dA.append(sqrt(sum))
+                    
 
         newNaa = 0
         newNan = 0
