@@ -153,3 +153,51 @@ class DrugDatabase:
         elif method == 5:
             return self.AmtNnn5
         return 0
+
+    def setAmtNaa(self,method,value):
+        if method == 1:
+            self.AmtNaa1 = value
+        elif method == 2:
+            self.AmtNaa2 = value
+        elif method == 3:
+            self.AmtNaa3 = value
+        elif method == 4:
+            self.AmtNaa4 = value
+        elif method == 5:
+            self.AmtNaa5 = value
+
+    def setAmtNan(self,method,value):
+        if method == 1:
+            self.AmtNan1 = value
+        elif method == 2:
+            self.AmtNan2 = value
+        elif method == 3:
+            self.AmtNan3 = value
+        elif method == 4:
+            self.AmtNan4 = value
+        elif method == 5:
+            self.AmtNan5 = value
+
+    def setAmtNna(self,method,value):
+        if method == 1:
+            self.AmtNna1 = value
+        elif method == 2:
+            self.AmtNna2 = value
+        elif method == 3:
+            self.AmtNna3 = value
+        elif method == 4:
+            self.AmtNna4 = value
+        elif method == 5:
+            self.AmtNna5 = value
+
+    def setAmtNnn(self,method,value):
+        if method == 1:
+            self.AmtNnn1 = value
+        elif method == 2:
+            self.AmtNnn2 = value
+        elif method == 3:
+            self.AmtNnn3 = value
+        elif method == 4:
+            self.AmtNnn4 = value
+        elif method == 5:
+            self.AmtNnn5 = value
