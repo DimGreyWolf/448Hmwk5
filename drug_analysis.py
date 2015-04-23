@@ -83,7 +83,7 @@ class DrugAnalysis:
     #================================
 
     # Euclidean Distance Analyzation method
-    def method1(self,drug):
+    def method1(self):
         # Obtains name element of selected candidate using model
         candidateName = self.model.getCandidateData(drug,0)
         log = 'Analyzing drug {} using Euclidean Distance comparison.'.format(candidateName)
@@ -115,17 +115,17 @@ class DrugAnalysis:
         return 0
 
     # Mahalnobis Database Analyzation method
-    def method2(self,drug):
+    def method2(self):
         return 0
 
     # Voting method using Euclidean Distance method
-    def method3(self,drug):
+    def method3(self):
         return 0
 
     # Voting method using Mahalnobus Database Analyzation method
-    def method4(self,drug):
+    def method4(self):
         return 0
 
     # Special Analyzation method
-    def method5(self,drug):
+    def method5(self):
         return 0
