@@ -1,9 +1,7 @@
-# 448Hmwk5
-Homework #5, Naa/Nan things
+# EECS 448 Homework 5
+This program is part of an assignment for the University of Kansas course EECS 48 in which we develop a drug analysis program.
 
 [Homework Assignment Document](http://i.groupme.com/720x960.png.d783d80ae83e49ed9eb518cf2ba9d58e.large)
-
-Homework #5 for EECS 448
 
 # Authors
 Harrison Hetler, Henry Nguyen, Tony Nguyen, Lei Wang
