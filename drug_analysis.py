@@ -12,6 +12,8 @@ class DrugAnalysis:
         self.view = view
         self.model = model
         self.selectedMethod = 0
+        self.model.readCandidates('hw5db1.txt')
+        self.model.readExamples('hw5db2.txt')
 
     #===============================
     # GUI related methods
@@ -93,28 +95,48 @@ class DrugAnalysis:
     def method1(self):
         print('Performing comparison method 1...')
 
-        # Data structures to store delta difference from active and non-active
-        dA = []
-        dN = []
-
-        # Go through list of all candidates
-        for x in range(0,self.model.getAmtCandidates()):
-            # Go through list of all examples
-            for y in range(0,self.model.getAmtExamples()):
-                sum = 0
-                # Go through all elements aka properties
-                for z in range(4,19):
-                    candidateProperty = self.model.getCandidateDrug(x,z)
-                    exampleProperty = self.model.getExampleDrug(y,z)
-                    diff = candidateProperty - exampleProperty
-                    sum += pow(diff,2)
-                dA.append(sqrt(sum))
-                    
-
         newNaa = 0
         newNan = 0
         newNna = 0
         newNnn = 0
+
+        print(self.model.getAmtExamples())
+
+        print(self.model.getAmtCandidates())
+        # Go through list of all candidates
+        for x in range(0,self.model.getAmtCandidates()):
+            # Go through list of all examples
+            dA = 0.0
+            dN = 0.0
+            sumNaa = 0.0
+            sumNan = 0.0
+            # Go through all elements aka properties
+            for z in range(4,19):
+                candidateProperty = 0.0
+                exampleNaaProperty = 0.0
+                exampleNanProperty = 0.0
+                candidateProperty = self.model.getCandidateData(x,z)
+                if z < 12:
+                   exampleNaaProperty = self.model.getExampleData(1,z-4)
+                   exampleNanProperty = self.model.getExampleData(3,z-4)
+                else:
+                   exampleNaaProperty = self.model.getExampleData(2,z-12)
+                   exampleNanProperty = self.model.getExampleData(4,z-12)
+                candidateProperty = float(candidateProperty)
+                exampleNaaProperty = float(exampleNaaProperty)
+                exampleNanProperty = float(exampleNanProperty)
+                diffNaa = candidateProperty - exampleNaaProperty
+                diffNan = candidateProperty - exampleNanProperty
+                print('diffA: {} vs. diffB: {}'.format(diffNaa,diffNan))
+                sumNaa += pow(abs(diffNaa),2)
+                sumNan += pow(abs(diffNan),2)
+            dA = math.sqrt(sumNaa)
+            dN = math.sqrt(sumNan) 
+            print('dA: {} vs. dN: {}'.format(dA,dN))
+            if dA <= dN:
+                newNaa += 1
+            else:
+                newNan += 1
 
         # Sets new drug counts using current method
         self.model.setAmtNaa(1,newNaa)

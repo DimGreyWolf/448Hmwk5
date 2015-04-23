@@ -25,4 +25,8 @@ for example in range(0,8):
         text += str(test_class.getExampleData(example,element)) + '|'
     print(text)
 
+print('Amount of candidates {}'.format(test_class.getAmtCandidates()))
+print('Amount of examples {}'.format(test_class.getAmtExamples()))
+
 print('If displayed data matches data files, then test passes')
+
