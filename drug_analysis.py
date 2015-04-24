@@ -113,12 +113,14 @@ class DrugAnalysis:
                 exampleNaaProperty = 0.0
                 exampleNanProperty = 0.0
                 candidateProperty = self.model.getCandidateData(x,z)
+                #Getting means and standard deviations from second file
                 if z < 11:
                    exampleNaaProperty = self.model.getExampleData(0,z-3)
                    exampleNanProperty = self.model.getExampleData(2,z-3)
                 else:
                    exampleNaaProperty = self.model.getExampleData(1,z-11)
                    exampleNanProperty = self.model.getExampleData(3,z-11)
+                #Euclidean Distance calculations
                 candidateProperty = float(candidateProperty)
                 exampleNaaProperty = float(exampleNaaProperty)
                 exampleNanProperty = float(exampleNanProperty)
@@ -182,6 +184,7 @@ class DrugAnalysis:
                 exampleNaaSigma = 0.0
                 exampleNanSigma = 0.0
                 candidateProperty = self.model.getCandidateData(x,z)
+                #Getting means and standard deviations from second file
                 if z < 11:
                    exampleNaaProperty = self.model.getExampleData(0,z-3)
                    exampleNanProperty = self.model.getExampleData(2,z-3)
@@ -192,6 +195,7 @@ class DrugAnalysis:
                    exampleNanProperty = self.model.getExampleData(3,z-11)
                    exampleNaaSigma = self.model.getExampleData(5,z-11)
                    exampleNanSigma = self.model.getExampleData(7,z-11)
+                #Mahalanobis Database calculation
                 candidateProperty = float(candidateProperty)
                 exampleNaaProperty = float(exampleNaaProperty)
                 exampleNanProperty = float(exampleNanProperty)
@@ -257,12 +261,14 @@ class DrugAnalysis:
                 exampleNaaProperty = 0.0
                 exampleNanProperty = 0.0
                 candidateProperty = self.model.getCandidateData(x,z)
+                #Getting means and standard deviations from second file
                 if z < 11:
                    exampleNaaProperty = self.model.getExampleData(0,z-3)
                    exampleNanProperty = self.model.getExampleData(2,z-3)
                 else:
                    exampleNaaProperty = self.model.getExampleData(1,z-11)
                    exampleNanProperty = self.model.getExampleData(3,z-11)
+                #Voting Euclidean Distrance calculations
                 candidateProperty = float(candidateProperty)
                 exampleNaaProperty = float(exampleNaaProperty)
                 exampleNanProperty = float(exampleNanProperty)
@@ -336,6 +342,7 @@ class DrugAnalysis:
                 exampleNaaSigma = 0.0
                 exampleNanSigma = 0.0
                 candidateProperty = self.model.getCandidateData(x,z)
+                #Getting means and standard deviations from second file
                 if z < 11:
                    exampleNaaProperty = self.model.getExampleData(0,z-3)
                    exampleNanProperty = self.model.getExampleData(2,z-3)
@@ -346,6 +353,7 @@ class DrugAnalysis:
                    exampleNanProperty = self.model.getExampleData(3,z-11)
                    exampleNaaSigma = self.model.getExampleData(5,z-11)
                    exampleNanSigma = self.model.getExampleData(7,z-11)
+                #Voting Mahalanobis Database calculations
                 candidateProperty = float(candidateProperty)
                 exampleNaaProperty = float(exampleNaaProperty)
                 exampleNanProperty = float(exampleNanProperty)
@@ -421,6 +429,7 @@ class DrugAnalysis:
                 exampleNaaSigma = 0.0
                 exampleNanSigma = 0.0
                 candidateProperty = self.model.getCandidateData(x,z)
+                #Getting means and standard deviations from second files
                 if z < 11:
                    exampleNaaProperty = self.model.getExampleData(0,z-3)
                    exampleNanProperty = self.model.getExampleData(2,z-3)
@@ -431,6 +440,7 @@ class DrugAnalysis:
                    exampleNanProperty = self.model.getExampleData(3,z-11)
                    exampleNaaSigma = self.model.getExampleData(5,z-11)
                    exampleNanSigma = self.model.getExampleData(7,z-11)
+                #Special calculations combining Method 3 and Method 4
                 candidateProperty = float(candidateProperty)
                 exampleNaaProperty = float(exampleNaaProperty)
                 exampleNanProperty = float(exampleNanProperty)
@@ -473,7 +483,6 @@ class DrugAnalysis:
         print(newNan)
         print(newNna)
         print(newNnn)
-        print('Naa Naa Naa Batman')
 
         # Sets new drug counts using current method
         self.model.setAmtNaa(5,newNaa)
