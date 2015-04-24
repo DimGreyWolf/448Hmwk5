@@ -100,9 +100,6 @@ class DrugAnalysis:
         newNna = 0
         newNnn = 0
 
-        print(self.model.getAmtExamples())
-
-        print(self.model.getAmtCandidates())
         # Go through list of all candidates
         for x in range(0,self.model.getAmtCandidates()):
             # Go through list of all examples
@@ -111,32 +108,43 @@ class DrugAnalysis:
             sumNaa = 0.0
             sumNan = 0.0
             # Go through all elements aka properties
-            for z in range(4,19):
+            for z in range(3,19):
                 candidateProperty = 0.0
                 exampleNaaProperty = 0.0
                 exampleNanProperty = 0.0
                 candidateProperty = self.model.getCandidateData(x,z)
-                if z < 12:
-                   exampleNaaProperty = self.model.getExampleData(1,z-4)
-                   exampleNanProperty = self.model.getExampleData(3,z-4)
+                if z < 11:
+                   exampleNaaProperty = self.model.getExampleData(0,z-3)
+                   exampleNanProperty = self.model.getExampleData(2,z-3)
                 else:
-                   exampleNaaProperty = self.model.getExampleData(2,z-12)
-                   exampleNanProperty = self.model.getExampleData(4,z-12)
+                   exampleNaaProperty = self.model.getExampleData(1,z-11)
+                   exampleNanProperty = self.model.getExampleData(3,z-11)
                 candidateProperty = float(candidateProperty)
                 exampleNaaProperty = float(exampleNaaProperty)
                 exampleNanProperty = float(exampleNanProperty)
                 diffNaa = candidateProperty - exampleNaaProperty
                 diffNan = candidateProperty - exampleNanProperty
-                print('diffA: {} vs. diffB: {}'.format(diffNaa,diffNan))
-                sumNaa += pow(abs(diffNaa),2)
-                sumNan += pow(abs(diffNan),2)
-            dA = math.sqrt(sumNaa)
-            dN = math.sqrt(sumNan) 
-            print('dA: {} vs. dN: {}'.format(dA,dN))
-            if dA <= dN:
-                newNaa += 1
+                powNaa = diffNaa * diffNaa
+                powNan = diffNan * diffNan
+                sumNaa = sumNaa + powNaa
+                sumNan = sumNan + powNan
+            dA = float(math.sqrt(sumNaa))
+            dN = float(math.sqrt(sumNan))
+            if x < 1348:
+                if dA <= dN:
+                    newNaa = newNaa + 1
+                else: 
+                    newNan = newNan + 1
             else:
-                newNan += 1
+               if dA <= dN:
+                    newNna = newNna + 1
+               else:
+                    newNnn = newNnn + 1
+
+        print(newNaa)
+        print(newNan)
+        print(newNna)
+        print(newNnn)
 
         # Sets new drug counts using current method
         self.model.setAmtNaa(1,newNaa)
@@ -145,7 +153,7 @@ class DrugAnalysis:
         self.model.setAmtNnn(1,newNnn)
 
         if newNan != 0:
-            newRatio = newNaa / newNan
+            newRatio = float(newNaa) / float(newNan)
         else:
             newRatio = newNaa
         self.model.setRatio(1,newRatio)
@@ -153,6 +161,69 @@ class DrugAnalysis:
     # Mahalnobis Database Analyzation method
     def method2(self):
         print('Performing comparison method 2...')
+
+        newNaa = 0
+        newNan = 0
+        newNna = 0
+        newNnn = 0
+
+        # Go through list of all candidates
+        for x in range(0,self.model.getAmtCandidates()):
+            # Go through list of all examples
+            dA = 0.0
+            dN = 0.0
+            sumNaa = 0.0
+            sumNan = 0.0
+            # Go through all elements aka properties
+            for z in range(3,19):
+                candidateProperty = 0.0
+                exampleNaaProperty = 0.0
+                exampleNanProperty = 0.0
+                exampleNaaSigma = 0.0
+                exampleNanSigma = 0.0
+                candidateProperty = self.model.getCandidateData(x,z)
+                if z < 11:
+                   exampleNaaProperty = self.model.getExampleData(0,z-3)
+                   exampleNanProperty = self.model.getExampleData(2,z-3)
+                   exampleNaaSigma = self.model.getExampleData(4,z-3) 
+                   exampleNanSigma = self.model.getExampleData(6,z-3)
+                else:
+                   exampleNaaProperty = self.model.getExampleData(1,z-11)
+                   exampleNanProperty = self.model.getExampleData(3,z-11)
+                   exampleNaaSigma = self.model.getExampleData(5,z-11)
+                   exampleNanSigma = self.model.getExampleData(7,z-11)
+                candidateProperty = float(candidateProperty)
+                exampleNaaProperty = float(exampleNaaProperty)
+                exampleNanProperty = float(exampleNanProperty)
+                exampleNaaSigma = float(exampleNaaSigma)
+                exampleNanSigma = float(exampleNanSigma)
+                diffNaa = (candidateProperty - exampleNaaProperty) / exampleNaaSigma
+                diffNan = (candidateProperty - exampleNanProperty) / exampleNanSigma
+                powNaa = diffNaa * diffNaa
+                powNan = diffNan * diffNan
+                sumNaa = sumNaa + powNaa
+                sumNan = sumNan + powNan
+            dA = float(math.sqrt(sumNaa))
+            dN = float(math.sqrt(sumNan))
+            if dA <= dN:
+                newNaa = newNaa + 1
+            else: 
+                newNan = newNan + 1
+
+        print(newNaa)
+        print(newNan)
+
+        # Sets new drug counts using current method
+        self.model.setAmtNaa(2,newNaa)
+        self.model.setAmtNan(2,newNan)
+        self.model.setAmtNna(2,newNna)
+        self.model.setAmtNnn(2,newNnn)
+
+        if newNan != 0:
+            newRatio = float(newNaa) / float(newNan)
+        else:
+            newRatio = newNaa
+        self.model.setRatio(2,newRatio)
 
     # Voting method using Euclidean Distance method
     def method3(self):
