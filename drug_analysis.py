@@ -136,10 +136,10 @@ class DrugAnalysis:
                 if dA <= dN:
                     newNaa = newNaa + 1
                 else: 
-                    newNan = newNan + 1
+                    newNna = newNna + 1
             else:
                if dA <= dN:
-                    newNna = newNna + 1
+                    newNan = newNan + 1
                else:
                     newNnn = newNnn + 1
 
@@ -213,10 +213,10 @@ class DrugAnalysis:
                 if dA <= dN:
                     newNaa = newNaa + 1
                 else: 
-                    newNan = newNan + 1
+                    newNna = newNna + 1
             else:
                 if dA <= dN:
-                    newNna = newNna + 1
+                    newNan = newNan + 1
                 else:
                     newNnn = newNnn + 1
 
@@ -292,10 +292,10 @@ class DrugAnalysis:
                 if Pa <= Qa:
                     newNaa = newNaa + 1
                 else:
-                    newNan = newNan + 1
+                    newNna = newNna + 1
             else:
                 if Pn <= Qn:
-                    newNna = newNna + 1
+                    newNan = newNan + 1
                 else:
                     newNnn = newNnn + 1 
 
@@ -379,10 +379,10 @@ class DrugAnalysis:
                 if Pa <= Qa:
                     newNaa = newNaa + 1
                 else:
-                    newNan = newNan + 1
+                    newNna = newNna + 1
             else:
                 if Pn <= Qn:
-                    newNna = newNna + 1
+                    newNan = newNan + 1
                 else:
                     newNnn = newNnn + 1 
 
@@ -472,10 +472,10 @@ class DrugAnalysis:
                 if Pa <= Qa:
                     newNaa = newNaa + 1
                 else:
-                    newNan = newNan + 1
+                    newNna = newNna + 1
             else:
                 if Pn <= Qn:
-                    newNna = newNna + 1
+                    newNan = newNan + 1
                 else:
                     newNnn = newNnn + 1 
 
